@@ -40,6 +40,21 @@
   <FrameworkProperties>
     <Entries />
   </FrameworkProperties>
+  <ExtraMemories>
+    <ExtraMemoryDefinition>
+      <Name>SDRAM</Name>
+      <Address>3224371200</Address>
+      <Size>4194304</Size>
+      <Type>FLASH</Type>
+      <ContainsText>true</ContainsText>
+      <ContainsData>true</ContainsData>
+      <ContainsBSS>true</ContainsBSS>
+      <GenerateBinFile>false</GenerateBinFile>
+      <PreserveUnusedSymbols>false</PreserveUnusedSymbols>
+      <NoAutoLoad>false</NoAutoLoad>
+    </ExtraMemoryDefinition>
+  </ExtraMemories>
+  <EditableLinkerScriptFile>STM32F746NG_flash.lds</EditableLinkerScriptFile>
   <TestFrameworkProperties>
     <Entries />
   </TestFrameworkProperties>

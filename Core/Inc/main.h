@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -53,7 +53,9 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void TaskSwitchedIn(int tag);
+void TaskSwitchedOut(int tag);
+void vApplicationIdleHook(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

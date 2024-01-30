@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -25,7 +25,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <stdlib.h>
+#include "ft5336.h"
+#include "CtoCppBridge.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -45,7 +48,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-
+TS_StateTypeDef g_tsState;
 /* USER CODE END Variables */
 osThreadId mainGameTaskHandle;
 osThreadId touchscreenTaskHandle;
@@ -127,11 +130,11 @@ void MX_FREERTOS_Init(void) {
 void StartMainGameTask(void const * argument)
 {
   /* USER CODE BEGIN StartMainGameTask */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+#ifdef TASK_DEBUG
+  vTaskSetApplicationTaskTag(NULL, (TaskHookFunction_t)1);
+#endif
+
+  EventLoopC();
   /* USER CODE END StartMainGameTask */
 }
 
@@ -145,10 +148,16 @@ void StartMainGameTask(void const * argument)
 void StartTouchscreenTask(void const * argument)
 {
   /* USER CODE BEGIN StartTouchscreenTask */
+#ifdef TASK_DEBUG
+  vTaskSetApplicationTaskTag(NULL, (TaskHookFunction_t)2);
+#endif
+
+  uint32_t tickCount = osKernelSysTick();
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    TS_GetState(&g_tsState);
+    osDelayUntil(&tickCount, 50);
   }
   /* USER CODE END StartTouchscreenTask */
 }

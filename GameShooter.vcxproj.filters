@@ -214,6 +214,27 @@
     <Filter Include="VisualGDB settings">
       <UniqueIdentifier>{8edc4b2c-92f2-4134-b6cc-87ea6f83d3c6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Game">
+      <UniqueIdentifier>{a63dfc41-1300-4f2d-993c-42adb4298124}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Graphics">
+      <UniqueIdentifier>{521405fc-705f-474a-a2a7-8e9d4f011872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\MainGame">
+      <UniqueIdentifier>{a890f730-8252-4e0d-9d66-ac24b6c04339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Menu">
+      <UniqueIdentifier>{6311299f-fabf-4ac0-a261-3db950604a9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Graphics\Textures">
+      <UniqueIdentifier>{798da283-3b80-4c78-b773-d1ddd7c4a4eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\MainGame\Objects">
+      <UniqueIdentifier>{da0b409a-dc5e-4079-bbcb-6a084e1d5710}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Game\Menu\Objects">
+      <UniqueIdentifier>{a88d98c3-bd34-48de-8d38-e38ea1e28d77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Inc\dma.h">
@@ -305,9 +326,6 @@
     </ClCompile>
     <ClCompile Include="Core\Src\usart.c">
       <Filter>Source files\Core\Src</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Startup\startup_stm32f746nghx.s">
-      <Filter>Source files\Core\Startup</Filter>
     </ClCompile>
     <ClCompile Include="FATFS\App\fatfs.c">
       <Filter>Source files\FATFS\App</Filter>
@@ -732,9 +750,6 @@
     <None Include="stm32.props">
       <Filter>Source files\Device-specific files</Filter>
     </None>
-    <ClCompile Include="$(BSP_ROOT)\STM32F7xxxx\StartupFiles\startup_stm32f746xx.c">
-      <Filter>Source files\Device-specific files</Filter>
-    </ClCompile>
     <None Include="GameShooter-Debug.vgdbsettings">
       <Filter>VisualGDB settings</Filter>
     </None>
@@ -744,5 +759,201 @@
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
+    <ClInclude Include="ExtraMemories.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Image.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Inc\ft5336.h">
+      <Filter>Source files\Core\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Inc\GUIConf.h">
+      <Filter>Source files\Core\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Inc\LCDConf.h">
+      <Filter>Source files\Core\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Inc\sdram.h">
+      <Filter>Source files\Core\Inc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\Block.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\Bonus.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\Bullet.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\Enemy.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\GameObject.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\Human.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Objects\Player.hpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Array.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Body.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Game.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\GameObjectType.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Joystick.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Level.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Point.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\MainGame\Size.hpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Menu\Objects\Button.hpp">
+      <Filter>Source files\Game\Menu\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Menu\Objects\CheckBox.hpp">
+      <Filter>Source files\Game\Menu\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Menu\Objects\MenuObject.hpp">
+      <Filter>Source files\Game\Menu\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Menu\MainMenuItem.hpp">
+      <Filter>Source files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Menu\MenuConstructor.hpp">
+      <Filter>Source files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Menu\PauseMenu.hpp">
+      <Filter>Source files\Game\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Constants.hpp">
+      <Filter>Source files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\CtoCppBridge.hpp">
+      <Filter>Source files\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <LinkerScript Include="STM32F746NG_flash.lds">
+      <Filter>Source files</Filter>
+    </LinkerScript>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ExtraMemories.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Src\ft5336.c">
+      <Filter>Source files\Core\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Src\LCDConf.c">
+      <Filter>Source files\Core\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Src\GUI_X.c">
+      <Filter>Source files\Core\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Src\GUIConf.c">
+      <Filter>Source files\Core\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Src\sdram.c">
+      <Filter>Source files\Core\Src</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\Enemy.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\EnemyBullet.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\EnemyDamaged.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\Heart.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\Player.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\PlayerBullet.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\PlayerDamaged.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\Shield.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\Speed.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\Star.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Graphics\Textures\25\WoodenBox.c">
+      <Filter>Source files\Game\Graphics\Textures</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\Block.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\Bonus.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\Bullet.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\Enemy.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\GameObject.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\Human.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Objects\Player.cpp">
+      <Filter>Source files\Game\MainGame\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Game.cpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Joystick.cpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\MainGame\Level.cpp">
+      <Filter>Source files\Game\MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Menu\Objects\Button.cpp">
+      <Filter>Source files\Game\Menu\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Menu\Objects\CheckBox.cpp">
+      <Filter>Source files\Game\Menu\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Menu\Objects\MenuObject.cpp">
+      <Filter>Source files\Game\Menu\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Menu\MenuConstructor.cpp">
+      <Filter>Source files\Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Menu\PauseMenu.cpp">
+      <Filter>Source files\Game\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\CtoCppBridge.cpp">
+      <Filter>Source files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Startup\startup_stm32f746nghx.S">
+      <Filter>Source files\Core\Startup</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

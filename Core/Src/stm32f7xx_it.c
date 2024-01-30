@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -22,6 +22,8 @@
 #include "stm32f7xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "GUI.h"
+#include "LCDConf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,7 +43,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-
+extern volatile GUI_TIMER_TIME OS_TimeMS;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -205,7 +207,7 @@ void TIM1_UP_TIM10_IRQHandler(void)
   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
   HAL_TIM_IRQHandler(&htim1);
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
-
+  OS_TimeMS++;
   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
 }
 
@@ -285,11 +287,11 @@ void LTDC_IRQHandler(void)
 void DMA2D_IRQHandler(void)
 {
   /* USER CODE BEGIN DMA2D_IRQn 0 */
-
+  
   /* USER CODE END DMA2D_IRQn 0 */
   HAL_DMA2D_IRQHandler(&hdma2d);
   /* USER CODE BEGIN DMA2D_IRQn 1 */
-
+  DMA2D_InterruptHandler();
   /* USER CODE END DMA2D_IRQn 1 */
 }
 

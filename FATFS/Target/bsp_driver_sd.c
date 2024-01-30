@@ -11,7 +11,7 @@
  ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -219,6 +219,7 @@ __weak void BSP_SD_GetCardInfo(HAL_SD_CardInfoTypeDef *CardInfo)
 
 /* USER CODE BEGIN BeforeCallBacksSection */
 /* can be used to modify previous code / undefine following code / add code */
+
 /* USER CODE END BeforeCallBacksSection */
 /**
   * @brief SD Abort callbacks
@@ -251,6 +252,7 @@ void HAL_SD_RxCpltCallback(SD_HandleTypeDef *hsd)
 }
 
 /* USER CODE BEGIN CallBacksSection_C */
+
 /**
   * @brief BSP SD Abort callback
   * @retval None

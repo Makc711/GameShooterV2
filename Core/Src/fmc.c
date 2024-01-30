@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -189,7 +189,37 @@ static void HAL_FMC_MspInit(void){
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* USER CODE BEGIN FMC_MspInit 1 */
-
+#if 1
+  static DMA_HandleTypeDef dma_handle;
+  /* Configure common DMA parameters */
+  dma_handle.Init.Channel             = DMA_CHANNEL_0;
+  dma_handle.Init.Direction           = DMA_MEMORY_TO_MEMORY;
+  dma_handle.Init.PeriphInc           = DMA_PINC_ENABLE;
+  dma_handle.Init.MemInc              = DMA_MINC_ENABLE;
+  dma_handle.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
+  dma_handle.Init.MemDataAlignment    = DMA_MDATAALIGN_WORD;
+  dma_handle.Init.Mode                = DMA_NORMAL;
+  dma_handle.Init.Priority            = DMA_PRIORITY_HIGH;
+  dma_handle.Init.FIFOMode            = DMA_FIFOMODE_DISABLE;         
+  dma_handle.Init.FIFOThreshold       = DMA_FIFO_THRESHOLD_FULL;
+  dma_handle.Init.MemBurst            = DMA_MBURST_SINGLE;
+  dma_handle.Init.PeriphBurst         = DMA_PBURST_SINGLE; 
+  
+  dma_handle.Instance = DMA2_Stream0;
+  
+  /* Associate the DMA handle */
+  __HAL_LINKDMA(&hsdram1, hdma, dma_handle);
+  
+  /* Deinitialize the stream for new transfer */
+  HAL_DMA_DeInit(&dma_handle);
+  
+  /* Configure the DMA stream */
+  HAL_DMA_Init(&dma_handle); 
+  
+  /* NVIC configuration for DMA transfer complete interrupt */
+  HAL_NVIC_SetPriority(DMA2_Stream0_IRQn, 0x0F, 0);
+  HAL_NVIC_EnableIRQ(DMA2_Stream0_IRQn);
+#endif
   /* USER CODE END FMC_MspInit 1 */
 }
 

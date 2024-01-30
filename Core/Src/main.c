@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -32,7 +32,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <GUI.h>
+#include <stdio.h>
+#include "sdram.h"
+#include "ft5336.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -106,7 +109,7 @@ int main(void)
   PeriphCommonClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -121,7 +124,17 @@ int main(void)
   MX_RNG_Init();
   MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
+  FATFS_UnLinkDriver(SDPath);
+  Touch_Init();
+  SDRAM_Init(&hsdram1);
+  /* Enable CRC to Unlock GUI */
+  __HAL_RCC_CRC_CLK_ENABLE();
+  GUI_Init();
+  /* Set memdev multibuffering */
+  GUI_MEMDEV_MULTIBUF_Enable(1);
 
+  GUI_SetBkColor(GUI_BLUE_TEAL);
+  GUI_Clear();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
@@ -221,7 +234,50 @@ void PeriphCommonClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void TaskSwitchedIn(const int tag)
+{
+#ifdef TASK_DEBUG
+  switch (tag)
+  {
+  case 1:
+    HAL_GPIO_WritePin(PIN_TASK1_GPIO_Port, PIN_TASK1_Pin, GPIO_PIN_SET);
+    break;
+  case 2:
+    HAL_GPIO_WritePin(PIN_TASK2_GPIO_Port, PIN_TASK2_Pin, GPIO_PIN_SET);
+    break;
+  case 3:
+    HAL_GPIO_WritePin(PIN_TASK3_GPIO_Port, PIN_TASK3_Pin, GPIO_PIN_SET);
+    break;
+  }
+#endif
+}
 
+void TaskSwitchedOut(const int tag)
+{
+#ifdef TASK_DEBUG
+  switch (tag)
+  {
+  case 1:
+    HAL_GPIO_WritePin(PIN_TASK1_GPIO_Port, PIN_TASK1_Pin, GPIO_PIN_RESET);
+    break;
+  case 2:
+    HAL_GPIO_WritePin(PIN_TASK2_GPIO_Port, PIN_TASK2_Pin, GPIO_PIN_RESET);
+    break;
+  case 3:
+    HAL_GPIO_WritePin(PIN_TASK3_GPIO_Port, PIN_TASK3_Pin, GPIO_PIN_RESET);
+    break;
+  }
+#endif
+}
+
+void vApplicationIdleHook(void)
+{
+#ifdef IDLE_MON
+  HAL_GPIO_WritePin(PIN_TASK3_GPIO_Port, PIN_TASK3_Pin, GPIO_PIN_SET);
+  __NOP();
+  HAL_GPIO_WritePin(PIN_TASK3_GPIO_Port, PIN_TASK3_Pin, GPIO_PIN_RESET);
+#endif
+}
 /* USER CODE END 4 */
 
 /* MPU Configuration */
@@ -289,7 +345,11 @@ void MPU_Config(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
-
+#ifdef SYSTICK_MON
+  HAL_GPIO_WritePin(PIN_TASK4_GPIO_Port, PIN_TASK4_Pin, GPIO_PIN_SET);
+  __NOP();
+  HAL_GPIO_WritePin(PIN_TASK4_GPIO_Port, PIN_TASK4_Pin, GPIO_PIN_RESET);
+#endif
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM1) {
     HAL_IncTick();
@@ -306,6 +366,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
+  GUI_SelectLayer(1);
+  GUI_SetBkColor(GUI_RED);
+  GUI_Clear();
   /* User can add his own implementation to report the HAL error return state */
   __disable_irq();
   while (1)

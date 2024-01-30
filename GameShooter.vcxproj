@@ -44,16 +44,18 @@
     <ClCompile>
       <CLanguageStandard>
       </CLanguageStandard>
-      <AdditionalIncludeDirectories>Core\Inc;FATFS\Target;FATFS\App;Drivers\STM32F7xx_HAL_Driver\Inc;Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;Middlewares\Third_Party\FatFs\src;Drivers\CMSIS\Device\ST\STM32F7xx\Include;Drivers\CMSIS\Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F746xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Game;Game\MainGame;Game\MainGame\Objects;Game\Menu;Game\Menu\Objects;App;App\generated;Game\Graphics\Textures\25;Core\Inc;FATFS\Target;FATFS\App;Drivers\STM32F7xx_HAL_Driver\Inc;Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\FatFs\src;Drivers\CMSIS\Device\ST\STM32F7xx\Include;Drivers\CMSIS\Include;GUI;GUI\inc;GUI\lib;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F746xx;TASK_DEBUG;IDLE_MON;SYSTICK_MON;DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
-      <CPPLanguageStandard />
+      <CPPLanguageStandard>GNUPP1Z</CPPLanguageStandard>
+      <IgnoreStandardIncludePaths>false</IgnoreStandardIncludePaths>
+      <SupportRTTI>true</SupportRTTI>
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LinkerScript>F:\_STM32_PROJECTS\F746\GameShooterV2\STM32F746NGHX_FLASH.ld</LinkerScript>
+      <LibrarySearchDirectories>GUI\lib;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>:STemWin_CM7_wc32_ARGB.a;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript>STM32F746NGHX_FLASH.ld</LinkerScript>
       <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
@@ -61,20 +63,22 @@
     <ClCompile>
       <CLanguageStandard>
       </CLanguageStandard>
-      <AdditionalIncludeDirectories>Core\Inc;FATFS\Target;FATFS\App;Drivers\STM32F7xx_HAL_Driver\Inc;Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;Middlewares\Third_Party\FatFs\src;Drivers\CMSIS\Device\ST\STM32F7xx\Include;Drivers\CMSIS\Include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F746xx;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>Game;Game\MainGame;Game\MainGame\Objects;Game\Menu;Game\Menu\Objects;App;App\generated;Game\Graphics\Textures\25;Core\Inc;FATFS\Target;FATFS\App;Drivers\STM32F7xx_HAL_Driver\Inc;Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;Middlewares\Third_Party\FatFs\src;Drivers\CMSIS\Device\ST\STM32F7xx\Include;Drivers\CMSIS\Include;GUI;GUI\inc;GUI\lib;Middlewares\Third_Party\FreeRTOS\Source\include;Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>USE_HAL_DRIVER;STM32F746xx;NDEBUG=1;RELEASE=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
-      <CPPLanguageStandard />
+      <CPPLanguageStandard>GNUPP1Z</CPPLanguageStandard>
+      <SupportRTTI>true</SupportRTTI>
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
-      <LinkerScript>F:\_STM32_PROJECTS\F746\GameShooterV2\STM32F746NGHX_FLASH.ld</LinkerScript>
+      <LibrarySearchDirectories>GUI\lib;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>:STemWin_CM7_wc32_ARGB.a;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript>STM32F746NGHX_FLASH.ld</LinkerScript>
       <AdditionalOptions />
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <LinkerScript Include="STM32F746NG_flash.lds" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
@@ -84,12 +88,16 @@
     <ClInclude Include="Core\Inc\dma2d.h" />
     <ClInclude Include="Core\Inc\fmc.h" />
     <ClInclude Include="Core\Inc\FreeRTOSConfig.h" />
+    <ClInclude Include="Core\Inc\ft5336.h" />
     <ClInclude Include="Core\Inc\gpio.h" />
+    <ClInclude Include="Core\Inc\GUIConf.h" />
     <ClInclude Include="Core\Inc\i2c.h" />
+    <ClInclude Include="Core\Inc\LCDConf.h" />
     <ClInclude Include="Core\Inc\ltdc.h" />
     <ClInclude Include="Core\Inc\main.h" />
     <ClInclude Include="Core\Inc\rng.h" />
     <ClInclude Include="Core\Inc\sdmmc.h" />
+    <ClInclude Include="Core\Inc\sdram.h" />
     <ClInclude Include="Core\Inc\stm32f7xx_hal_conf.h" />
     <ClInclude Include="Core\Inc\stm32f7xx_it.h" />
     <ClInclude Include="Core\Inc\usart.h" />
@@ -97,12 +105,17 @@
     <ClCompile Include="Core\Src\dma2d.c" />
     <ClCompile Include="Core\Src\fmc.c" />
     <ClCompile Include="Core\Src\freertos.c" />
+    <ClCompile Include="Core\Src\ft5336.c" />
     <ClCompile Include="Core\Src\gpio.c" />
+    <ClCompile Include="Core\Src\GUIConf.c" />
+    <ClCompile Include="Core\Src\GUI_X.c" />
     <ClCompile Include="Core\Src\i2c.c" />
+    <ClCompile Include="Core\Src\LCDConf.c" />
     <ClCompile Include="Core\Src\ltdc.c" />
     <ClCompile Include="Core\Src\main.c" />
     <ClCompile Include="Core\Src\rng.c" />
     <ClCompile Include="Core\Src\sdmmc.c" />
+    <ClCompile Include="Core\Src\sdram.c" />
     <ClCompile Include="Core\Src\stm32f7xx_hal_msp.c" />
     <ClCompile Include="Core\Src\stm32f7xx_hal_timebase_tim.c" />
     <ClCompile Include="Core\Src\stm32f7xx_it.c" />
@@ -110,7 +123,10 @@
     <ClCompile Include="Core\Src\sysmem.c" />
     <ClCompile Include="Core\Src\system_stm32f7xx.c" />
     <ClCompile Include="Core\Src\usart.c" />
+    <ClCompile Include="Core\Startup\startup_stm32f746nghx.S" />
+    <ClCompile Include="ExtraMemories.c" />
     <ClCompile Include="FATFS\App\fatfs.c" />
+    <ClInclude Include="ExtraMemories.h" />
     <ClInclude Include="FATFS\App\fatfs.h" />
     <ClCompile Include="FATFS\Target\bsp_driver_sd.c" />
     <ClInclude Include="FATFS\Target\bsp_driver_sd.h" />
@@ -119,7 +135,58 @@
     <ClInclude Include="FATFS\Target\ffconf.h" />
     <ClCompile Include="FATFS\Target\sd_diskio.c" />
     <ClInclude Include="FATFS\Target\sd_diskio.h" />
+    <ClCompile Include="Game\CtoCppBridge.cpp" />
+    <ClCompile Include="Game\Graphics\Textures\25\Enemy.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\EnemyBullet.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\EnemyDamaged.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\Heart.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\Player.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\PlayerBullet.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\PlayerDamaged.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\Shield.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\Speed.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\Star.c" />
+    <ClCompile Include="Game\Graphics\Textures\25\WoodenBox.c" />
+    <ClCompile Include="Game\MainGame\Game.cpp" />
+    <ClCompile Include="Game\MainGame\Joystick.cpp" />
+    <ClCompile Include="Game\MainGame\Level.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\Block.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\Bonus.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\Bullet.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\Enemy.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\GameObject.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\Human.cpp" />
+    <ClCompile Include="Game\MainGame\Objects\Player.cpp" />
+    <ClCompile Include="Game\Menu\MenuConstructor.cpp" />
+    <ClCompile Include="Game\Menu\Objects\Button.cpp" />
+    <ClCompile Include="Game\Menu\Objects\CheckBox.cpp" />
+    <ClCompile Include="Game\Menu\Objects\MenuObject.cpp" />
+    <ClCompile Include="Game\Menu\PauseMenu.cpp" />
     <ClCompile Include="Middlewares\Third_Party\FatFs\src\diskio.c" />
+    <ClInclude Include="Game\Constants.hpp" />
+    <ClInclude Include="Game\CtoCppBridge.hpp" />
+    <ClInclude Include="Game\MainGame\Array.hpp" />
+    <ClInclude Include="Game\MainGame\Body.hpp" />
+    <ClInclude Include="Game\MainGame\Game.hpp" />
+    <ClInclude Include="Game\MainGame\GameObjectType.hpp" />
+    <ClInclude Include="Game\MainGame\Image.hpp" />
+    <ClInclude Include="Game\MainGame\Joystick.hpp" />
+    <ClInclude Include="Game\MainGame\Level.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\Block.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\Bonus.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\Bullet.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\Enemy.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\GameObject.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\Human.hpp" />
+    <ClInclude Include="Game\MainGame\Objects\Player.hpp" />
+    <ClInclude Include="Game\MainGame\Point.hpp" />
+    <ClInclude Include="Game\MainGame\Size.hpp" />
+    <ClInclude Include="Game\Menu\MainMenuItem.hpp" />
+    <ClInclude Include="Game\Menu\MenuConstructor.hpp" />
+    <ClInclude Include="Game\Menu\Objects\Button.hpp" />
+    <ClInclude Include="Game\Menu\Objects\CheckBox.hpp" />
+    <ClInclude Include="Game\Menu\Objects\MenuObject.hpp" />
+    <ClInclude Include="Game\Menu\PauseMenu.hpp" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\diskio.h" />
     <ClCompile Include="Middlewares\Third_Party\FatFs\src\ff.c" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\ff.h" />
@@ -251,7 +318,6 @@
     <ClCompile Include="Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_fmc.c" />
     <ClCompile Include="Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_sdmmc.c" />
     <None Include="stm32.props" />
-    <ClCompile Include="$(BSP_ROOT)\STM32F7xxxx\StartupFiles\startup_stm32f746xx.c" />
     <None Include="GameShooter-Debug.vgdbsettings" />
     <None Include="GameShooter-Release.vgdbsettings" />
     <None Include="stm32.xml" />
